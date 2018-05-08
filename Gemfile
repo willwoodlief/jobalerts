@@ -60,7 +60,8 @@ gem 'figaro'
 ##################################
 # ###### add in scanner and database for freelancer.com
 # ##############
-gem 'flancer', path: '/home/will/htdocs/flancer'
+# gem 'flancer', path: '/home/will/htdocs/flancer'  #uncomment when working on it
+gem 'flancer',:git => 'https://github.com/willwoodlief/flancer'
 
 #################################
 # color library

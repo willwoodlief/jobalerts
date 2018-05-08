@@ -1,5 +1,6 @@
-PATH
-  remote: /home/will/htdocs/flancer
+GIT
+  remote: https://github.com/willwoodlief/flancer
+  revision: e53ac167ae4c75305c5a4fa2624e7311d355b1a6
   specs:
     flancer (0.1.2)
       kaminari
