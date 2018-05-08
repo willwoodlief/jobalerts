@@ -6,12 +6,15 @@ ActiveSupport::Notifications.subscribe('notify_exception') do |name, start, fini
   files = data[:files]
   extra = data[:extra_message]
 
+  engine_names = EngineTask::JOB_ENGINES.map(&:downcase).map {|x| '/' + x +  '/' }
+
   if exception.backtrace&.empty?
     file_line = nil
   else
     file_line_index = 0
     file_line = exception.backtrace[file_line_index].to_s
-    while file_line.include? '/gems/'
+    while (file_line.match(Regexp.union(engine_names)).nil?) &&
+          (file_line_index < exception.backtrace.count)
       file_line_index += 1
       file_line = exception.backtrace[file_line_index].to_s
     end

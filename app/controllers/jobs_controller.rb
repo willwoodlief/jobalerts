@@ -37,10 +37,9 @@ class JobsController < ApplicationController
     symbolic = hash.symbolize_keys
     symbolic[:star_color] = XJob.color_to_hex_string(color_string: symbolic[:star_color])
     m  = EngineTask.module_class_by_engine_name(iid: symbolic[:id])
-    me = m.new
     internal_id = symbolic[:id]
     symbolic[:id] = XJob.id_by_internal_id(iid: symbolic[:id])
-    me.update_post(symbolic)
+    m.update_post(symbolic)
     reflect_native = XJob.native_by_internal_id(iid: internal_id)
     x_job = XJob.from_native(object_from: reflect_native)
     render json: {  msg: 'job was updated', xjob: x_job.as_json }

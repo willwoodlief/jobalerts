@@ -41,8 +41,7 @@ class EngineTask < ApplicationRecord
 
   def self.get_jobs_found_in_range(engine: ,start_range_ts: nil, end_range_ts: nil)
     the = module_class_by_engine_name(iid:engine)
-    m = the.new
-    stats = m.get_post_counts(start_range_ts: start_range_ts, end_range_ts: end_range_ts)
+    stats = the.get_post_counts(start_range_ts: start_range_ts, end_range_ts: end_range_ts)
     return stats
   end
 

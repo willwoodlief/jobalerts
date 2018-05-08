@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/willwoodlief/flancer
-  revision: e53ac167ae4c75305c5a4fa2624e7311d355b1a6
+  revision: 948bbc47f06b0ff2a587a1292fa6a2bc9d8a8f84
   specs:
-    flancer (0.1.2)
+    flancer (0.1.5)
       kaminari
       rails (~> 5.1.6)
       selenium-webdriver
