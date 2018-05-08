@@ -4,9 +4,6 @@ class HomeController < ApplicationController
 
   # Public method
   def index
-    byebug
-    Rails.logger.warn "rough"
-    puts "test"
     render json: { service: 'auth-api', status: 200 }
   end
 
@@ -15,9 +12,6 @@ class HomeController < ApplicationController
     render json: { status: 200, msg: "You are currently Logged-in as #{current_user.username}" }
   end
 
-  def get_jobs
-
-  end
 
 
 end
