@@ -82,65 +82,9 @@ class JobsController < ApplicationController
   end
 
   def test
-    engine = 'flancer'
-    # @type [EngineTask|nil] etask
-    etask = nil
-    Thread.new do
-
-      begin
-      ActiveRecord::Base.connection_pool.with_connection do
-        etask = EngineTask.new
-        etask.engine = engine
-        etask.task = nil
-        etask.save
-      end
-
-      eeid = etask.id.to_s
-      script_path = Rails.root.to_s + "/lib/bash_scripts/run_engine_task.sh"
-      command = "bash #{script_path}"
-      rvm_base_path = ENV['RVM_BASE_PATH']
-      webjob_path = Rails.root.to_s
-      rails_env = Rails.env.to_s
-      pid = spawn({
-                      "webjob_path" => webjob_path,
-                      "rvm_base_directory" =>rvm_base_path ,
-                      "eeid" => eeid,
-                      "engine" => engine,
-                      "rails_environment" => rails_env
-                  },
-                  command)
-
-      ActiveRecord::Base.connection_pool.with_connection do
-        etask.start= Time.now
-        # noinspection RubyResolve
-        etask.is_started = true
-        etask.save
-      end
 
 
-      Process.wait pid
-
-      ActiveRecord::Base.connection_pool.with_connection do
-        etask.stop = Time.now
-        # noinspection RubyResolve
-        etask.is_stopped = true
-        etask.save
-      end
-      rescue => nasty
-        m = EngineTaskException.new
-        ActiveRecord::Base.connection_pool.with_connection do
-          m.engine_task_id = etask.id
-          m.exception_class = nasty.class.name.to_s
-          m.stack_trace_as_json = nasty.backtrace.to_json
-          m.message = nasty.message
-          m.save
-          Rails.logger.error "Rescued exception from thread creating engine task. Exception id of #{m.id} and " +
-                                 m.as_json.to_s
-        end
-      end
-    end
-
-    render json: {engine: engine, message: 'running bash script'}
+    render json: { message: 'test not used'}
   end
 
   private
