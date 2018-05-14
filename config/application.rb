@@ -35,5 +35,14 @@ module Jobalerts
     Flancer::user_name = ENV['freelancer_user_name']
     Flancer::user_password = ENV['freelancer_password']
 
+    if Rails.env.development?
+      config.middleware.insert_before 0, Rack::Cors do
+        allow do
+          origins '*'
+          resource '*', :headers => :any, :methods => [:get, :post, :options]
+        end
+      end
+    end
+
   end
 end

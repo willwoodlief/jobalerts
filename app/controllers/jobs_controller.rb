@@ -29,7 +29,7 @@ class JobsController < ApplicationController
     serializable_resource = ActiveModelSerializers::SerializableResource.new(ordered_results, options)
     model_json = serializable_resource.as_json
 
-    render json: {results: model_json, meta: meta}
+    render json: {results: model_json, meta: meta, options_used: symbolic}
   end
 
   def update
