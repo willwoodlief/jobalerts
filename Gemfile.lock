@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/willwoodlief/flancer
-  revision: 948bbc47f06b0ff2a587a1292fa6a2bc9d8a8f84
+  revision: 96e901edc4eda077bacd6ee0111d2fe0f0f7afe0
   specs:
-    flancer (0.1.5)
+    flancer (0.1.7)
       kaminari
       rails (~> 5.1.6)
       selenium-webdriver
@@ -148,7 +148,7 @@ GEM
       rack (>= 1.4)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
-    selenium-webdriver (3.11.0)
+    selenium-webdriver (3.12.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     spring (2.0.2)
